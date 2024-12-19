@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobby: Playing Football</title>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #001f3f, #0074d9);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #0074d9, #001f3f);
+            color: #fff;
+        }
+
+        header h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        main {
+            padding: 20px 10%;
+        }
+
+        .intro-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffdc00;
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #f1f1f1;
+        }
+
+        .gallery-section {
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffdc00;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .image-item {
+            position: relative;
+        }
+
+        .image-item img {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .image-item img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .image-caption {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #f1f1f1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 80%;
+            max-height: 80%;
+            border: 3px solid #ffdc00;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.7);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffdc00;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #ff6666;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Hobby: Playing Football</h1>
+    </header>
+    <main>
+        <section class="intro-section">
+            <h2>Why I Love Football</h2>
+            <p>
+                Football is my passion because it brings excitement, teamwork, and joy. The rush of scoring a goal, strategizing with teammates, and the thrill of competition inspire me. It builds discipline, improves fitness, and fosters friendships. Football teaches resilience, perseverance, and unity, making it more than a game—it's a way of life.
+            </p>
+        </section>
+        <section class="gallery-section">
+            <h2>Photo Gallery</h2>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="imageiman2.JPEG" alt="Playing football on the field" onclick="openModal(this)">
+                    <p class="image-caption">Playing football on the field</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman3.JPEG" alt="Football team huddle" onclick="openModal(this)">
+                    <p class="image-caption">Football team huddle</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman4.JPEG" alt="Scoring a goal" onclick="openModal(this)">
+                    <p class="image-caption">Scoring a goal</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman22.JPEG" alt="Celebrating a victory" onclick="openModal(this)">
+                    <p class="image-caption">Celebrating a victory</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman23.JPEG" alt="Practicing drills" onclick="openModal(this)">
+                    <p class="image-caption">Practicing drills</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman24.JPEG" alt="Football under the sunset" onclick="openModal(this)">
+                    <p class="image-caption">Football under the sunset</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman25.JPEG" alt="Focused gameplay" onclick="openModal(this)">
+                    <p class="image-caption">Focused gameplay</p>
+                </div>
+                <div class="image-item">
+                    <img src="imageiman48.JPEG" alt="Celebrating teamwork" onclick="openModal(this)">
+                    <p class="image-caption">Celebrating teamwork</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup Modal -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modal-image" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+        function openModal(image) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = image.src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
+
+
